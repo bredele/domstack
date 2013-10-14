@@ -11,10 +11,10 @@ module.exports = Stack;
  *
  * @param {DomElement} parent the DOM element to stack
  * @param {DomElement} doc optional document's fragment parent
+ * @api public
  */
 
 function Stack(parent, doc) {
-  //should we transform any dom into a stack : Stack(el) --> return a new instance of Stack
   this.parent = parent;
   this.fragment = document.createDocumentFragment();
   this.directory = [];
@@ -43,8 +43,7 @@ Stack.prototype.add = function(name, dom) {
  * @api public
  */
 
-Stack.prototype.get = function( name ) {
-  //everything under is crap! May be use store
+Stack.prototype.show = function( name ) {
   var index = this.directory.indexOf(name);
   if(index > -1) {
     var dom = this.fragment.childNodes[index];
