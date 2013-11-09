@@ -5,7 +5,7 @@
 
 ## Installation
 
-  Install with [component(1)](http://component.io):
+  Install with [component](http://component.io):
 
     $ component install bredele/stack
 
@@ -19,9 +19,10 @@
 var stack = new Stack(document.body);
 ```
 
-### add(name, dom)
+### add(name, dom [, bool])
 
-  Identify a dom element by name and push it into the stack
+  Identify a dom element by name and push it into the stack.
+  The optional boolean allows to set the current child in the stack (visible one).
 
 ```js
 stack.add('olivier', document.querySelector('.olivier'));
