@@ -25,14 +25,23 @@ function Stack(parent, doc) {
 /**
  * Add dom in stack.
  *
- * @param {String} [name] dom name
- * @param {DomElement} [el] dom element
+ * @param {String} dom name
+ * @param {DomElement} dom element
+ * @param {Boolean} current visible dom (optional)
  * @api public
  */
 
-Stack.prototype.add = function(name, dom) {
-  this.directory.push(name);
-  this.fragment.appendChild(dom);
+Stack.prototype.add = function(name, dom, bool) {
+  if(!bool) {
+    this.directory.push(name);
+    this.fragment.appendChild(dom);
+    return;
+  }
+  
+  if(this.current) {
+    this.add(this.current[0], this.current[1]);
+  }
+  this.current = [name, dom];
 };
 
 
@@ -43,29 +52,14 @@ Stack.prototype.add = function(name, dom) {
  * @api public
  */
 
-Stack.prototype.show = function( name ) {
+Stack.prototype.show = function(name) {
   var index = this.directory.indexOf(name);
   if(index > -1) {
     var dom = this.fragment.childNodes[index];
     this.parent.appendChild(dom);
     this.directory.splice(index, 1);
 
-    if(this.current) {
-      this.add(this.current[0], this.current[1]);
-    }
-
-    this.current = [name, dom];
+    this.add(name, dom, true);
   }
 };
 
-
-/**
- * Set stack parent.
- *
- * @param {DomElement} [el] dom element
- * @api public
- */
-
-Stack.prototype.parent = function( el ) {
-  this.parent = el;
-};

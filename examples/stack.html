@@ -28,17 +28,16 @@
 	<script>
 	var Stack = require('stack');
 	var stack = new Stack(document.querySelector('.content'));
-	debugger
-	stack.add('el1', document.querySelector('.el1'));
-	stack.add('el2', document.querySelector('.el2'));
+	stack.add('el1', document.querySelector('.el1'), true);
+	stack.add('el2', document.querySelector('.el2'), true);
 	stack.add('el3', document.querySelector('.el3'));
 
-	var i = 1;
-	setInterval(function(){
-		if(i === 4) i = 1;
-		stack.show('el' + i);
-		i++;
-	}, 500);
+	// var i = 1;
+	// setInterval(function(){
+	// 	if(i === 4) i = 1;
+	// 	stack.show('el' + i);
+	// 	i++;
+	// }, 500);
 	</script>
 </body>
 </html>
