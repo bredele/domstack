@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Stack</title>
+</head>
+<body>
+	<p>
+		Don't forget to first build the component.
+		<pre>
+			<code>make build</code>
+		</pre>
+	</p>
+	<section class="content">
+		<article class="el1">
+			<h1>Element 1</h1>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, dolorum, eligendi, modi dicta odio rerum voluptas eveniet numquam non distinctio est mollitia optio vero consequatur nulla. Illum, iure corporis accusantium?
+		</article>
+		<article class="el2">
+			<h1>Element 2</h1>
+			<button>Youhouuuu</button>
+		</article>
+		<article class="el3">
+			<h1>Element 3</h1>
+		</article>
+	</section>
+	<script src="../build/build.js"></script>
+	<script>
+	var Stack = require('stack');
+	var stack = new Stack(document.querySelector('.content'));
+	debugger
+	stack.add('el1', document.querySelector('.el1'));
+	stack.add('el2', document.querySelector('.el2'));
+	stack.add('el3', document.querySelector('.el3'));
+
+	var i = 1;
+	setInterval(function(){
+		if(i === 4) i = 1;
+		stack.show('el' + i);
+		i++;
+	}, 500);
+	</script>
+</body>
+</html>
