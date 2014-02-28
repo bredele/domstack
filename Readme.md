@@ -1,13 +1,17 @@
 
-# stack
+# domstack
 
-  Stack your dom nodes
+  Stack your dom nodes into a document fragment.
 
 ## Installation
 
-  Install with [component](http://component.io):
+with [component](http://component.io):
 
-    $ component install bredele/stack
+    $ component install bredele/domstack
+
+with [nodejs](http://nodejs.org):
+
+    $ npm install domstack
 
 ## API
 
@@ -16,6 +20,7 @@
   Stack constructor. Create a stack from a `parent` dom element.
 
 ```js
+var Stack = require('domstack');
 var stack = new Stack(document.body);
 ```
 

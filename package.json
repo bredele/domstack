@@ -1,5 +1,5 @@
 {
-  "name": "stack-component",
+  "name": "domstack",
   "version": "0.0.1",
   "description": "Stack your dom nodes into a document fragment",
   "main": "index.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bredele/stack.git"
+    "url": "git://github.com/bredele/domstack.git"
   },
   "keywords": [
     "stack",
@@ -25,6 +25,6 @@
   "author": "Olivier Wietrich <olivier.wietrich@gmail.com> (http://github.com/bredele)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bredele/stack/issues"
+    "url": "https://github.com/bredele/domstack/issues"
   }
 }

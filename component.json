@@ -1,6 +1,6 @@
 {
-  "name": "stack",
-  "repo": "bredele/stack",
+  "name": "domstack",
+  "repo": "bredele/domstack",
   "description": "Stack your dom nodes into a fragment",
   "version": "0.0.1",
   "keywords": [],
