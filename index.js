@@ -1,3 +1,5 @@
+var indexOf = require('indexof');
+
 
 /**
  * Expose 'Stack'
@@ -16,6 +18,7 @@ module.exports = Stack;
 
 function Stack(parent, doc) {
   this.parent = parent;
+  //TODO:set document
   this.fragment = document.createDocumentFragment();
   this.directory = [];
   this.current = null;
@@ -35,13 +38,14 @@ Stack.prototype.add = function(name, dom, bool) {
   if(!bool) {
     this.directory.push(name);
     this.fragment.appendChild(dom);
-    return;
+    return this;
   }
   
   if(this.current) {
     this.add(this.current[0], this.current[1]);
   }
   this.current = [name, dom];
+  return this;
 };
 
 
@@ -53,7 +57,7 @@ Stack.prototype.add = function(name, dom, bool) {
  */
 
 Stack.prototype.show = function(name) {
-  var index = this.directory.indexOf(name);
+  var index = indexOf(this.directory, name);
   if(index > -1) {
     var dom = this.fragment.childNodes[index];
     this.parent.appendChild(dom);
@@ -61,5 +65,6 @@ Stack.prototype.show = function(name) {
 
     this.add(name, dom, true);
   }
+  return this;
 };
 

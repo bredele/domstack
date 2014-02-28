@@ -1,0 +1,30 @@
+{
+  "name": "stack-component",
+  "version": "0.0.1",
+  "description": "Stack your dom nodes into a fragment",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bredele/stack.git"
+  },
+  "keywords": [
+    "stack",
+    "pile",
+    "fragment",
+    "document"
+  ],
+  "author": "Olivier Wietrich <olivier.wietrich@gmail.com> (http://github.com/bredele)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bredele/stack/issues"
+  },
+  "dependencies": {
+    "indexof": "0.0.1"
+  }
+}

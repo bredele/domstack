@@ -1,10 +1,12 @@
 {
   "name": "stack",
   "repo": "bredele/stack",
-  "description": "Stack your dom nodes",
+  "description": "Stack your dom nodes into a fragment",
   "version": "0.0.1",
   "keywords": [],
-  "dependencies": {},
+  "dependencies": {
+    "component/indexof": "*"
+  },
   "development": {},
   "license": "MIT",
   "main": "index.js",
