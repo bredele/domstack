@@ -1,5 +1,3 @@
-var indexOf = require('indexof');
-
 
 /**
  * Expose 'Stack'
@@ -9,62 +7,36 @@ module.exports = Stack;
 
 
 /**
- * Initialize a new Stack
- *
- * @param {DomElement} parent the DOM element to stack
- * @param {DomElement} doc optional document's fragment parent
+ * Stack constructor.
  * @api public
  */
 
-function Stack(parent, doc) {
-  this.parent = parent;
-  //TODO:set document
+function Stack(el) {
+  this.el = el;
   this.fragment = document.createDocumentFragment();
-  this.directory = [];
   this.current = null;
+  this.nodes = {};
 }
 
+function append(parent, child) {
+  if(child) return !!parent.appendChild(child);
+  return false;
+}
 
-/**
- * Add dom in stack.
- *
- * @param {String} dom name
- * @param {DomElement} dom element
- * @param {Boolean} current visible dom (optional)
- * @api public
- */
+Stack.prototype.get = function(name) {
+  return this.nodes[name];
+};
 
-Stack.prototype.add = function(name, dom, bool) {
-  if(!bool) {
-    this.directory.push(name);
-    this.fragment.appendChild(dom);
-    return this;
-  }
-  
-  if(this.current) {
-    this.add(this.current[0], this.current[1]);
-  }
-  this.current = [name, dom];
+Stack.prototype.add = function(name, node) {
+  this.nodes[name] = node;
+  append(this.fragment, node);
   return this;
 };
 
-
-/**
- * Set visible element from stack.
- *
- * @param {String} [name] dom name
- * @api public
- */
-
 Stack.prototype.show = function(name) {
-  var index = indexOf(this.directory, name);
-  if(index > -1) {
-    var dom = this.fragment.childNodes[index];
-    this.parent.appendChild(dom);
-    this.directory.splice(index, 1);
-
-    this.add(name, dom, true);
-  }
+  if(!append(this.el, this.get(name))) return;
+  append(this.fragment, this.get(this.current));
+  this.current = name;
   return this;
 };
 
