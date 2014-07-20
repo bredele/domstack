@@ -31,6 +31,17 @@ describe("stack", function() {
 		assert(!parent.hasChildNodes());
 	});
 
+	it('should get stacked nodes', function() {
+		stack.add('foo', foo);
+		stack.add('bar', bar);
+		stack.add('beep', beep);
+
+		assert(stack.get('foo'));
+		assert(stack.get('bar'));
+		assert(stack.get('beep'));
+		assert(!stack.get('bob'));
+	});
+
 	it('should show node in stack element', function() {
 		stack.add('foo', foo);
 		stack.add('bar', bar);
