@@ -1,7 +1,7 @@
 
 # domstack
 
-  Stack your dom nodes into a document fragment.
+  Stack your dom nodes outside of the main DOM tree.
 
 ## Installation
 
@@ -17,28 +17,37 @@ with [nodejs](http://nodejs.org):
 
 ### Stack(parent)
 
-  Stack constructor. Create a stack from a `parent` dom element.
+  Create a stack from a `root` dom element.
 
 ```js
 var Stack = require('domstack');
 var stack = new Stack(document.body);
 ```
 
-### add(name, dom [, bool])
+### add(name, dom)
 
-  Identify a dom element by name and push it into the stack.
-  The optional boolean allows to set the current child in the stack (visible one).
+  Add a node element into the stack.
 
 ```js
-stack.add('olivier', document.querySelector('.olivier'));
+stack.add('olivier', node);
 ```
+
+  A stacked node is appended to a document fragment. Since a fragment is in memory and not part of the main DOM tree, computing one of its children does not cause reflow of repaint and results in better performance.
 
 ### show(name)
 
-  Display a stacked element into the `parent` dom element.
+  Display a stacked node into the `root` dom element.
 
 ```js
 stack.show('olivier');
+``
+
+### get(name)
+
+  Get a stacked node.
+
+```js
+stack.get('olivier');
 ```
 
 
