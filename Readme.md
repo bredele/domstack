@@ -40,7 +40,7 @@ stack.add('olivier', node);
 
 ```js
 stack.show('olivier');
-``
+```
 
 ### get(name)
 
