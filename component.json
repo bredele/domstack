@@ -1,13 +1,12 @@
 {
   "name": "domstack",
   "repo": "bredele/domstack",
-  "description": "Stack your dom nodes into a fragment",
-  "version": "0.0.1",
+  "description": "Stack your dom nodes outside of the main DOM tree.",
+  "version": "0.1.0",
   "keywords": [],
-  "dependencies": {
-  },
+  "dependencies": {},
   "development": {
-    "component/assert" : "*"
+    "component/assert": "*"
   },
   "license": "MIT",
   "main": "index.js",
