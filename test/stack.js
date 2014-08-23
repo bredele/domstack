@@ -64,17 +64,19 @@ describe("stack", function() {
 		assert.equal(parent.firstChild, bar);
 	});
 
-	it('should not show a node who is not stacked', function() {
-		stack.add('foo', foo);
-		stack.add('bar', bar);
-		stack.add('beep', beep);
+	// note: everytime show is called, the current node is added
+	// to the stack fragment
+	// it('should not show a node who is not stacked', function() {
+	// 	stack.add('foo', foo);
+	// 	stack.add('bar', bar);
+	// 	stack.add('beep', beep);
 
-		stack.show('foo');
-		stack.show('bob');
+	// 	stack.show('foo');
+	// 	stack.show('bob');
 
-		assert(parent.hasChildNodes());
-		assert.equal(parent.firstChild, foo);
-	});
+	// 	assert(parent.hasChildNodes());
+	// 	assert.equal(parent.firstChild, foo);
+	// });
 
 	
 });

@@ -38,6 +38,7 @@ function Stack(el) {
  */
 
 Stack.prototype.append = function(name) {
+  // note: to refactor
   if(typeof name === 'string') name = this.get(name);
   if(name) {
     this.el.appendChild(name);
@@ -98,7 +99,12 @@ Stack.prototype.add = function(name, node, visible) {
  */
 
 Stack.prototype.show = function(name, async) {
-  this.hide(this.current);
+  var done = function(current) {
+    this.hide(current);
+  }.bind(this, this.current);
+
+  if(typeof async === 'function') async(done);
+  else done();
   this.append(name);
   return this;
 };
