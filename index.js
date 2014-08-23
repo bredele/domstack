@@ -29,18 +29,22 @@ function Stack(el) {
 
 
 /**
- * Append child.
+ * Append child node into 
+ * the stack bode.
  * 
- * @param  {Element} parent
- * @param  {Element} child
- * @return {Boolean} true if appenned
+ * @param  {String | Element} name
+ * @return {this}
  * @api private
  */
 
-function append(parent, child) {
-  if(child) return !!parent.appendChild(child);
-  return false;
-}
+Stack.prototype.append = function(name) {
+  if(typeof name === 'string') name = this.get(name);
+  if(name) {
+    this.el.appendChild(name);
+    this.current = name;
+  }
+  return this;
+};
 
 
 /**
@@ -66,11 +70,11 @@ Stack.prototype.get = function(name) {
  *   
  * @param {String} name
  * @param {Element} node
- * @param {Boolean} bool
+ * @param {Boolean} visible
  * @api public
  */
 
-Stack.prototype.add = function(name, node, bool) {
+Stack.prototype.add = function(name, node, visible) {
   this.nodes[name] = node;
   if(!visible) this.hide(node);
   else this.current = node;
