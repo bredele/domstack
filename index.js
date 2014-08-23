@@ -57,7 +57,8 @@ Stack.prototype.get = function(name) {
 
 
 /**
- * Add node element into the stack.
+ * Add node element into the 
+ * stack fragment.
  *
  * Examples
  *
@@ -65,12 +66,14 @@ Stack.prototype.get = function(name) {
  *   
  * @param {String} name
  * @param {Element} node
+ * @param {Boolean} bool
  * @api public
  */
 
-Stack.prototype.add = function(name, node) {
+Stack.prototype.add = function(name, node, bool) {
   this.nodes[name] = node;
-  append(this.fragment, node);
+  if(!visible) this.hide(node);
+  else this.current = node;
   return this;
 };
 
@@ -90,10 +93,23 @@ Stack.prototype.add = function(name, node) {
  * @api public
  */
 
-Stack.prototype.show = function(name) {
-  if(!append(this.el, this.get(name))) return;
-  append(this.fragment, this.get(this.current));
-  this.current = name;
+Stack.prototype.show = function(name, async) {
+  this.hide(this.current);
+  this.append(name);
+  return this;
+};
+
+
+/**
+ * Hide element into stack fragment.
+ * 
+ * @return {Element} el
+ * @return {this} 
+ * @api private
+ */
+
+Stack.prototype.hide = function(el) {
+  if(el) this.fragment.appendChild(el);
   return this;
 };
 
