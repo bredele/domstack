@@ -29,7 +29,7 @@ var stack = new Stack(document.body);
   Add a node element into the stack.
 
 ```js
-stack.add('olivier', node);
+stack.add('first', node);
 ```
 
   A stacked node is appended to a document fragment. Since a fragment is in memory and not part of the main DOM tree, computing one of its children does not cause reflow of repaint and results in better performance.
@@ -39,15 +39,19 @@ stack.add('olivier', node);
   Display a stacked node into the `root` dom element.
 
 ```js
-stack.show('olivier');
+stack.show('first');
 ```
 
-### get(name)
+  Only one stack child can be displayed at a time. However, you can asynchronously hide the current stack child as following:
 
-  Get a stacked node.
 
 ```js
-stack.get('olivier');
+stack.show('first');
+stack.show('second', function(done) {
+	// hide first
+	setTimeout(done, 3000);
+});
+
 ```
 
 
